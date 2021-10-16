@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SOS Button</string>
+    <string name="phoneNumber">Номер телефона</string>
+    <string name="time">Время (мин)</string>
+    <string name="call">Позвонить</string>
+    <string name="cancel">Отмена</string>
+    <string name="send">Отправить</string>
+    <string name="message">Ваше сообщение</string>
+    <string name="sms">СМС</string>
+    <string name="back">Назад</string>
+    <string name="attention">Не закрывайте приложение!</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SOS Button</string>
+    <string name="phoneNumber">Phone number</string>
+    <string name="time">Time  (min)</string>
+    <string name="call">Call</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="message">Your message</string>
+    <string name="sms">SMS</string>
+    <string name="back">Back</string>
+    <string name="attention">Don\'t close the app!</string>
+</resources>
