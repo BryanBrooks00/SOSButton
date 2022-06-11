@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -23,16 +24,33 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 final static  String TAG = "LOG";
-final static String EMPTY = "Please, enter all the fields";
     private static final int REQUEST_PHONE_CALL = 1;
+    private static final int REQUEST_SMS_SEND = 1;
+    private static Context instance;
+    Button btn_call;
+    Button btn_sms;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        instance = this;
 
-        Button btn_call = findViewById(R.id.btn_call);
-        Button btn_sms = findViewById(R.id.btn_sms);
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            Log.i(TAG, "PERMISSION NOT GRANTED");
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE},
+                    REQUEST_PHONE_CALL);
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS},
+                    REQUEST_SMS_SEND);
+        } else {
+            Log.i(TAG, "PERMISSION_GRANTED");
+        }
+
+        btn_call = findViewById(R.id.btn_call);
+        btn_sms = findViewById(R.id.btn_sms);
 
         btn_call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,4 +71,7 @@ final static String EMPTY = "Please, enter all the fields";
         });
     }
 
+    public static Context getContext(){
+        return instance;
+    }
 }

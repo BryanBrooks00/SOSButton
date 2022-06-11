@@ -15,9 +15,9 @@
         android:layout_marginStart="88dp"
         android:layout_marginTop="115dp"
         android:ems="10"
-        android:maxLength="4"
         android:hint="@string/phoneNumber"
         android:inputType="phone"
+        android:maxLength="15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
@@ -41,6 +41,7 @@
         android:ems="10"
         android:hint="@string/time"
         android:inputType="number"
+        android:maxLength="4"
         app:layout_constraintStart_toStartOf="@+id/phone_et"
         app:layout_constraintTop_toBottomOf="@+id/phone_et"
         tools:ignore="TouchTargetSizeCheck" />
@@ -77,8 +78,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="96dp"
         android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="@+id/btn_cancel"

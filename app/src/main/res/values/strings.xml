@@ -9,4 +9,6 @@
     <string name="sms">СМС</string>
     <string name="back">Назад</string>
     <string name="attention">Не закрывайте приложение!</string>
+    <string name="notification">SOS Button работает...</string>
+    <string name="dialing">Вызов...</string>
 </resources>

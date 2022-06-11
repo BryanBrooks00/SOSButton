@@ -27,25 +27,25 @@ import java.util.concurrent.TimeUnit;
 public class MessageActivity extends AppCompatActivity {
     final static  String TAG = "LOG";
     final static String EMPTY = "Please, enter all the fields";
-    private static final int REQUEST_SMS_SEND = 1;
+    Button btn_back;
+    TextView message_tv;
+    EditText phone_et;
+    EditText time_et;
+    Button btn_send;
+    Button btn_cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messsage_activity);
 
+        TextView message_tv = findViewById(R.id.message_et);
+        EditText phone_et = findViewById(R.id.phone_et);
+        EditText time_et = findViewById(R.id.time_et);
+        Button btn_send = findViewById(R.id.btn_send);
+        Button btn_cancel = findViewById(R.id.btn_cancel);
 
-        if (ContextCompat.checkSelfPermission(MessageActivity.this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-            Log.i(TAG, "PERMISSION NOT GRANTED");
-            ActivityCompat.requestPermissions(MessageActivity.this, new String[]{Manifest.permission.SEND_SMS},REQUEST_SMS_SEND);
-        }
-        else
-        {
-            Log.i(TAG, "PERMISSION GRANTED");
-            getStarted();
-        }
-
-        Button btn_back = findViewById(R.id.btn_back);
+        btn_back = findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,16 +58,8 @@ public class MessageActivity extends AppCompatActivity {
 
 
     public void getStarted(){
-        TextView message_tv = findViewById(R.id.message_et);
-        EditText phone_et = findViewById(R.id.phone_et);
-        EditText time_et = findViewById(R.id.time_et);
-        Button btn_send = findViewById(R.id.btn_send);
-        Button btn_cancel = findViewById(R.id.btn_cancel);
         btn_cancel.setEnabled(false);
         btn_cancel.setVisibility(View.INVISIBLE);
-        Button btn_back = findViewById(R.id.btn_back);
-
-
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,13 +99,6 @@ public class MessageActivity extends AppCompatActivity {
                 long seconds = TimeUnit.MILLISECONDS.toSeconds(l);
                 time_left_tv.setText(String.format("%02d", seconds / 60) + ":" + String.format("%02d", seconds % 60));
                 Log.i(TAG, "seconds = " + seconds);
-
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                if (seconds == 58) {
-                    Log.i(TAG, "vibrate");
-                    vibrator.vibrate(VibrationEffect.createOneShot(1500, VibrationEffect.DEFAULT_AMPLITUDE));
-                }
-
 
                 btn_cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
